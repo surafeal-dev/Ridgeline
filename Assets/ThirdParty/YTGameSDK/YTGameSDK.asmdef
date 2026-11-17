@@ -1,0 +1,6 @@
+{
+    "name": "YTGameSDK",
+    "rootNamespace": "YTGameSDK",
+    "references": [],
+    "autoReferenced": true
+}

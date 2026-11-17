@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+  <title>{{{ PRODUCT_NAME }}}</title>
+  <!-- YouTube Playables SDK: MUST load before any game code. -->
+  <script src="https://www.youtube.com/game_api/v1"></script>
+  <link rel="stylesheet" href="TemplateData/style.css">
+</head>
+
+<body>
+  <div id="game-root">
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+    <div id="loading">
+      <div id="loading-title">{{{ PRODUCT_NAME }}}</div>
+      <div id="loading-bar"><div id="loading-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <script>
+    // Based on Google's YTGameWrapperTemplate (Apache 2.0), trimmed for Ridgeline:
+    //  - no zip/unarchiver path (we ship uncompressed; YouTube compresses on upload)
+    //  - copies the page CSP nonce onto the dynamically created loader script
+    //  - handles 0-height viewports (only applies a size when innerHeight > 0)
+    //  - no navigator.language, no Page Visibility API, no external calls
+    var root = document.querySelector("#game-root");
+    var canvas = document.querySelector("#unity-canvas");
+    var loading = document.querySelector("#loading");
+    var loadingFill = document.querySelector("#loading-bar-fill");
+
+    function fitToViewport() {
+      // The viewport can briefly be 0 high inside YouTube; ignore those sizes.
+      if (window.innerHeight > 0 && window.innerWidth > 0) {
+        root.style.width = window.innerWidth + "px";
+        root.style.height = window.innerHeight + "px";
+      }
+    }
+    window.addEventListener("resize", fitToViewport);
+    fitToViewport();
+
+    // Errors/warnings go to the console only; any user-facing messaging is in-game.
+    function unityShowBanner(msg, type) {
+      if (type === "error") console.error(msg); else console.warn(msg);
+    }
+
+    var buildUrl = "Build";
+    var loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+    var config = {
+      dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+      frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+#if USE_THREADS
+      workerUrl: buildUrl + "/{{{ WORKER_FILENAME }}}",
+#endif
+#if USE_WASM
+      codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+#endif
+#if MEMORY_FILENAME
+      memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+      symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
+#endif
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+      productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+      productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+      showBanner: unityShowBanner,
+    };
+
+    // Read by UnityYTGameSDKLib.jslib (SendMessage back into C#).
+    var unityGameInstance = null;
+
+    // Playables rule: never preventDefault() on Esc. Unity's player captures keyboard events,
+    // so intercept Esc first (capture phase, registered before Unity loads), keep the browser
+    // default, and forward it to the game so modals can still close.
+    window.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" || e.key === "Esc") {
+        e.stopImmediatePropagation();
+        if (unityGameInstance) unityGameInstance.SendMessage("YTGameWrapper", "OnEscapeKey");
+      }
+    }, true);
+
+    var script = document.createElement("script");
+    script.src = loaderUrl;
+    // YouTube serves the game with a CSP nonce; scripts created from JS must copy it.
+    var nonced = document.querySelector("script[nonce]");
+    if (nonced && nonced.nonce) script.nonce = nonced.nonce;
+    script.onload = function () {
+      createUnityInstance(canvas, config, function (progress) {
+        loadingFill.style.width = (100 * progress) + "%";
+      }).then(function (unityInstance) {
+        unityGameInstance = unityInstance;
+        loading.style.display = "none";
+      }).catch(function (message) {
+        console.error(message);
+        if (typeof ytgame !== "undefined" && ytgame.health) ytgame.health.logError();
+      });
+    };
+    document.body.appendChild(script);
+  </script>
+</body>
+
+</html>

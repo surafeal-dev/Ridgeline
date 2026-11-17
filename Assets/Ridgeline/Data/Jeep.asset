@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60309982288b5dc4388202a04c119169, type: 3}
+  m_Name: Jeep
+  m_EditorClassIdentifier: Assembly-CSharp::Ridgeline.Vehicle.VehicleConfig
+  id: jeep
+  displayName: Jeep
+  chassisMass: 3
+  centerOfMass: {x: 0.15, y: -0.2}
+  chassisLinearDamping: 0.05
+  chassisAngularDamping: 0.25
+  wheelRadius: 0.595
+  wheelMass: 0.4
+  rearWheelAnchor: {x: -0.81, y: -0.69}
+  frontWheelAnchor: {x: 0.99, y: -0.69}
+  baseTireFriction: 0.6
+  maxTireFriction: 1.1
+  baseMotorSpeed: 1100
+  maxMotorSpeed: 2000
+  baseMotorTorque: 22
+  maxMotorTorque: 40
+  reverseSpeedFactor: 0.35
+  brakeTorque: 60
+  coastBrakeTorque: 3
+  baseSpringFrequency: 3.6
+  maxSpringFrequency: 3
+  baseDampingRatio: 0.3
+  maxDampingRatio: 0.6
+  groundTiltTorque: 10
+  airTiltTorque: 22
+  maxAirAngularSpeed: 450
+  fuelCapacity: 100
+  idleFuelBurn: 1.2
+  throttleFuelBurn: 1.8
+  headOffset: {x: 0.13, y: 0.68}
+  headRadius: 0.36
+  driverSeat: {x: 0.13, y: 0.22}
+  driverHeadHeight: 0.8
+  driverTorsoHeight: 0.36
+  bodyArtWidth: 3.4
+  bodyArtOffset: {x: 0, y: 0}
+  bodyShape:
+  - {x: -1.66, y: 0.19}
+  - {x: -1.66, y: -0.45}
+  - {x: 1.66, y: -0.45}
+  - {x: 1.68, y: -0.03}
+  - {x: 0.8, y: 0.15}

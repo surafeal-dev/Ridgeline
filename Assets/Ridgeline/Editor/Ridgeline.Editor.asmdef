@@ -1,0 +1,12 @@
+{
+    "name": "Ridgeline.Editor",
+    "rootNamespace": "Ridgeline.EditorTools",
+    "references": [
+        "Ridgeline",
+        "YTGameSDK"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "autoReferenced": false
+}

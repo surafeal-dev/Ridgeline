@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33cd32e20283def40a3a4ff25e63eaa5, type: 3}
+  m_Name: ArtSet
+  m_EditorClassIdentifier: Ridgeline::Ridgeline.Art.ArtSet
+  jeepBody: {fileID: 21300000, guid: 54c851ca16f37ce4ba2e5514089e98f6, type: 3}
+  jeepTire: {fileID: 21300000, guid: ba304b2fb1d96944ea8864e67784dc2d, type: 3}
+  driverHead: {fileID: 21300000, guid: 1a27b94e6b388ec4593e46d0c7b4d687, type: 3}
+  driverHeadHurt: {fileID: 21300000, guid: d31c7a70a77bce84ca9cb888d04ba5ac, type: 3}
+  driverBody: {fileID: 21300000, guid: ffda0f3f77bab42419c0daf0e4a45c22, type: 3}
+  driverArm: {fileID: 21300000, guid: 9e95e1880749bbc4696f68f8e7389d82, type: 3}
+  grassMaterial: {fileID: 2100000, guid: a1dfdc9f54fa5c740a37dd8bc0ee5a52, type: 2}
+  dirtMaterial: {fileID: 2100000, guid: 6ae52c067dba966448e48bb8b8a7d228, type: 2}
+  terrainTileSize: 1.6
+  farBackgroundMaterial: {fileID: 2100000, guid: 9745e8526cda7474487b60fc036b5b14, type: 2}
+  skyColor: {r: 0.8117647, g: 0.9372549, b: 0.9882353, a: 1}
+  coinBronze: {fileID: 21300000, guid: 11f4ced201571e845abca657a4e5d12a, type: 3}
+  coinSilver: {fileID: 21300000, guid: f018c5b001c7bad44b7b7d9468f2812d, type: 3}
+  coinGold: {fileID: 21300000, guid: 750b1450e26819c4397bee00833f74e7, type: 3}
+  coinGem: {fileID: 21300000, guid: 06b21d2bf90041d4aaeff86754f21c7a, type: 3}
+  fuelCan: {fileID: 21300000, guid: 1e7a6278b94f95a46a729c9d0e6227b3, type: 3}
+  trees:
+  - {fileID: 21300000, guid: c729677f35a80094cad10cae87a175bb, type: 3}
+  - {fileID: 21300000, guid: f87e6d97b1c0d8d46b662a5e60df803e, type: 3}
+  bushes:
+  - {fileID: 21300000, guid: 67009909b040ad34985b475ceda0804a, type: 3}
+  - {fileID: 21300000, guid: 7cfd27fc0f894c04c9b39b2a39654585, type: 3}
+  - {fileID: 21300000, guid: 09df73a09c70e92469791ecbc9694518, type: 3}
+  smallProps:
+  - {fileID: 21300000, guid: e2be5a91a3d06ee4b8befd6825b6bcf5, type: 3}
+  - {fileID: 21300000, guid: 564d0865ca99fd64e82f3d660d743df2, type: 3}
+  milestoneFlag: {fileID: 21300000, guid: b285bc575b02a3048b878e328a22d09f, type: 3}
+  font: {fileID: 12800000, guid: c6de8e2347a0e9346847c60f282b5aaa, type: 3}
+  hudCoin: {fileID: 21300000, guid: 50ae53abaa5fc864a8cd0f3faf02182a, type: 3}
+  coin: {fileID: 8300000, guid: 45c347985d73fa24d8b4afa4fe15e4ef, type: 3}
+  fuel: {fileID: 8300000, guid: aafc18517571cc44e90947be814c5ce9, type: 3}
+  bonus: {fileID: 8300000, guid: 86d8048c1a4dd7e4fb8e87763d1e1075, type: 3}
+  click: {fileID: 8300000, guid: 5b52ceb3eb1c05748b0abf4e6f5a1e35, type: 3}
+  crash: {fileID: 8300000, guid: 0ecb4164780f84b4581f9213ab4d2aca, type: 3}
+  bump: {fileID: 8300000, guid: f9b016ff4c31d72469e4aa05061ea65f, type: 3}
